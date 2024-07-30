@@ -1,0 +1,23 @@
+/* HomePage.css */
+.hero-section {
+    background: linear-gradient(to right, rgba(30, 58, 138, 0.7), rgba(37, 99, 235, 0.7));
+    position: relative;
+  }
+  
+  .features-section .feature-card {
+    transition: transform 0.3s;
+  }
+  
+  .about-section {
+    background: radial-gradient(circle, rgba(243, 244, 246, 0.8), rgba(229, 231, 235, 0.8));
+    position: relative;
+  }
+  
+  footer {
+    background: linear-gradient(to right, #1e3a8a, #2563eb);
+  }
+  
+  img {
+    object-fit: cover;
+  }
+  
