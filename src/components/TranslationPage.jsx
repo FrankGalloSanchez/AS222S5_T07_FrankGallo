@@ -5,6 +5,7 @@ import TranslationList from './TranslationList';
 import Header from '../Home/Header';
 import Footer from './Footer';
 import "./css/TranslationPage.css";
+import "../Home/css/Header.css";
 
 const TranslationPage = () => {
   const [translations, setTranslations] = useState([]);
@@ -83,16 +84,16 @@ const TranslationPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <main className="flex-1 flex items-center justify-center p-6">
-        <section className="flex flex-col lg:flex-row gap-6 items-center justify-center">
+      <main className="flex-1 flex items-center justify-center py-10 px-4">
+        <div className="flex flex-col lg:flex-row gap-6 items-center justify-center w-full max-w-6xl">
           {/* Form Section */}
-          <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+          <section className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
             <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">Servicio de Traducción</h1>
             <TranslateForm onTranslate={handleTranslate} />
-          </div>
+          </section>
 
           {/* Translation List Section */}
-          <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+          <section className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
             <div className="flex justify-center space-x-4 mb-6">
               <button
                 className={`px-4 py-2 rounded-lg ${activeTab === 'last' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
@@ -120,8 +121,8 @@ const TranslationPage = () => {
               onActivate={handleActivate}
               onEdit={handleEdit}
             />
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
       <Footer />
     </div>
@@ -129,4 +130,3 @@ const TranslationPage = () => {
 };
 
 export default TranslationPage;
-  
