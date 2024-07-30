@@ -10,14 +10,16 @@ const TranslationList = ({ translations, confirmationMessage, onDelete, onActiva
       {translations.length > 0 ? (
         <ul className="space-y-4">
           {translations.map((translation) => (
-            <li key={translation.id} className="p-4 border border-gray-200 rounded-lg shadow-sm">
-              <div className="flex justify-between items-center mb-2">
-                <strong className="text-gray-800">Texto Original:</strong>
-                <span className="text-gray-600">{translation.request_text}</span>
-              </div>
-              <div className="flex justify-between items-center mb-2">
-                <strong className="text-gray-800">Texto Traducido:</strong>
-                <span className="text-gray-600">{translation.translated_text}</span>
+            <li key={translation.id} className="p-4 border border-gray-200 rounded-lg shadow-sm bg-gray-50">
+              <div className="mb-4">
+                <div className="flex flex-col mb-2">
+                  <strong className="text-gray-800">Texto Original:</strong>
+                  <p className="text-gray-600">{translation.request_text}</p>
+                </div>
+                <div className="flex flex-col mb-2">
+                  <strong className="text-gray-800">Texto Traducido:</strong>
+                  <p className="text-gray-600">{translation.translated_text}</p>
+                </div>
               </div>
               <div className="flex gap-2 mt-4">
                 <button

@@ -3,6 +3,8 @@ import { getLastTranslation, addTranslation, deleteTranslation, getAllActives, g
 import TranslateForm from './TranslateForm';
 import TranslationList from './TranslationList';
 import Header from '../Home/Header';
+import Footer from './Footer';
+import "./css/TranslationPage.css";
 
 const TranslationPage = () => {
   const [translations, setTranslations] = useState([]);
@@ -16,15 +18,21 @@ const TranslationPage = () => {
   const fetchTranslations = async () => {
     try {
       let response;
-      if (activeTab === 'last') {
-        response = await getLastTranslation();
-        setTranslations([response.data]);
-      } else if (activeTab === 'all') {
-        response = await getAllActives();
-        setTranslations(response.data);
-      } else if (activeTab === 'inactives') {
-        response = await getAllInactives();
-        setTranslations(response.data);
+      switch (activeTab) {
+        case 'last':
+          response = await getLastTranslation();
+          setTranslations([response.data]);
+          break;
+        case 'all':
+          response = await getAllActives();
+          setTranslations(response.data);
+          break;
+        case 'inactives':
+          response = await getAllInactives();
+          setTranslations(response.data);
+          break;
+        default:
+          throw new Error('Invalid tab');
       }
     } catch (error) {
       console.error('Error fetching translations:', error);
@@ -73,43 +81,52 @@ const TranslationPage = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
-        <section className="bg-blue-600 text-white text-center py-20 mt-16 hero-section">
-          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Servicio de Traducción</h1>
-          <TranslateForm onTranslate={handleTranslate} />
-          <div className="flex justify-center space-x-4 my-6">
-            <button
-              className={`px-4 py-2 rounded-lg ${activeTab === 'last' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-              onClick={() => handleTabChange('last')}
-            >
-              Última Traducción
-            </button>
-            <button
-              className={`px-4 py-2 rounded-lg ${activeTab === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-              onClick={() => handleTabChange('all')}
-            >
-              Traducciones Activas
-            </button>
-            <button
-              className={`px-4 py-2 rounded-lg ${activeTab === 'inactives' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-              onClick={() => handleTabChange('inactives')}
-            >
-              Traducciones Inactivas
-            </button>
+      <main className="flex-1 flex items-center justify-center p-6">
+        <section className="flex flex-col lg:flex-row gap-6 items-center justify-center">
+          {/* Form Section */}
+          <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+            <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">Servicio de Traducción</h1>
+            <TranslateForm onTranslate={handleTranslate} />
           </div>
-          <TranslationList
-            translations={translations}
-            confirmationMessage={confirmationMessage}
-            onDelete={handleDelete}
-            onActivate={handleActivate}
-            onEdit={handleEdit}
-          />
+
+          {/* Translation List Section */}
+          <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+            <div className="flex justify-center space-x-4 mb-6">
+              <button
+                className={`px-4 py-2 rounded-lg ${activeTab === 'last' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                onClick={() => handleTabChange('last')}
+              >
+                Última Traducción
+              </button>
+              <button
+                className={`px-4 py-2 rounded-lg ${activeTab === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                onClick={() => handleTabChange('all')}
+              >
+                Traducciones Activas
+              </button>
+              <button
+                className={`px-4 py-2 rounded-lg ${activeTab === 'inactives' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+                onClick={() => handleTabChange('inactives')}
+              >
+                Traducciones Inactivas
+              </button>
+            </div>
+            <TranslationList
+              translations={translations}
+              confirmationMessage={confirmationMessage}
+              onDelete={handleDelete}
+              onActivate={handleActivate}
+              onEdit={handleEdit}
+            />
+          </div>
         </section>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 };
 
 export default TranslationPage;
+  
