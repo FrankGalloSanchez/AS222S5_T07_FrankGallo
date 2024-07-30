@@ -20,5 +20,7 @@ public interface TranslationTextRepository extends ReactiveCrudRepository<Transl
 	@Modifying
 	@Query("update translations set status = 'A' where id = :id")
 	Mono<Void> activeTranslation(Long id);
+
+	Mono<Translation> findTopByOrderByIdDesc();
 }
 

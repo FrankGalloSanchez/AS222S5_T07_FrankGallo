@@ -46,122 +46,117 @@ Configura el archivo application.properties:
 
 Asegúrate de que tu archivo src/main/resources/application.properties esté configurado correctamente:
 
-properties
-Copiar código
 spring.application.name=TranslatorText
 spring.r2dbc.url=r2dbc:pool:postgresql://aws-0-us-west-1.pooler.supabase.com:6543/postgres
 spring.r2dbc.username=postgres.saneziadygzklbkikvrl
 spring.r2dbc.password=Desierto2024v
 Compila y ejecuta la aplicación:
 
-bash
-Copiar código
+
 ./mvnw clean package
 ./mvnw spring-boot:run
-Accede a la aplicación:
 
-La aplicación estará disponible en http://localhost:8080.
+## Accede a la aplicación:
 
-Estructura del Proyecto
-src/main/java/pe/edu/vallegrande/TranslatorText/: Contiene el código fuente del proyecto.
+## La aplicación estará disponible en http://localhost:8080.
 
-rest/TranslatorTextRest.java: Controlador REST que maneja las solicitudes HTTP.
-model/TranslateRequestBody.java: Clase de modelo para el cuerpo de la solicitud de traducción.
-model/Translation.java: Entidad JPA que representa una traducción.
-repository/TranslationTextRepository.java: Repositorio para operaciones CRUD en la base de datos.
-service/TranslatorTextService.java: Servicio que maneja la lógica de negocio de traducción.
-src/main/resources/application.properties: Configuración de la aplicación, incluyendo detalles de la base de datos.
+## Estructura del Proyecto
+- src/main/java/pe/edu/vallegrande/TranslatorText/: Contiene el código fuente del proyecto.
+- rest/TranslatorTextRest.java: Controlador REST que maneja las solicitudes HTTP.
+- model/TranslateRequestBody.java: Clase de modelo para el cuerpo de la solicitud de traducción.
+- model/Translation.java: Entidad JPA que representa una traducción.
+- repository/TranslationTextRepository.java: Repositorio para operaciones CRUD en la base de datos.
+- service/TranslatorTextService.java: Servicio que maneja la lógica de negocio de traducción.
+- src/main/resources/application.properties: Configuración de la aplicación, incluyendo detalles de la base de datos.
 
-Uso de la API
-A continuación se detallan los endpoints disponibles en la API:
+## Uso de La API
 
-Traducir Texto
+**A continuación se detallan los endpoints disponibles en la API:**
+**Traducir Texto**
 Método: POST
-
 URL: http://localhost:8080/translate
-
-Cuerpo de la Solicitud:
-
-json
-Copiar código
+**Cuerpo de la Solicitud:**
+```bash
 {
   "text": "Texto a traducir",
   "from": "idioma_origen",
   "to": "idioma_destino"
 }
-Obtener Todas las Traducciones
+
+**Obtener Todas las Traducciones**
 Método: GET
 URL: http://localhost:8080/translate/all
 Editar Traducción
 Método: PUT
-
 URL: http://localhost:8080/translate/edit/{id}
 
-Cuerpo de la Solicitud:
 
-json
-Copiar código
-{
-  "request_text": "Texto actualizado",
-  "from_lang": "nuevo_idioma_origen",
-  "to_lang": "nuevo_idioma_destino"
-}
-Nota: Reemplaza {id} con el ID de la traducción a editar.
+**Cuerpo de la Solicitud:**
 
-Eliminar Traducción
+```bash
+  {
+    "request_text": "Texto actualizado",
+    "from_lang": "nuevo_idioma_origen",
+    "to_lang": "nuevo_idioma_destino"
+  }
+  Nota: Reemplaza {id} con el ID de la traducción a editar.
+
+**Eliminar Traducción**
 Método: DELETE
-
 URL: http://localhost:8080/translate/delete/{id}
-
 Nota: Reemplaza {id} con el ID de la traducción a eliminar.
 
-Obtener Traducciones Activas
+
+
+**Obtener Traducciones Activas**
 Método: GET
 URL: http://localhost:8080/translate/actives
-Obtener Traducciones Inactivas
+
+
+**Obtener Traducciones Inactivas**
 Método: GET
 URL: http://localhost:8080/translate/inactives
-Obtener Traducción por ID
+
+
+**Obtener Traducción por ID**
 Método: GET
-
 URL: http://localhost:8080/translate/{id}
-
 Nota: Reemplaza {id} con el ID de la traducción a obtener.
 
-Activar Traducción
+
+**Activar Traducción**
 Método: PUT
-
 URL: http://localhost:8080/translate/activate/{id}
-
 Nota: Reemplaza {id} con el ID de la traducción a activar.
 
-Probar Conexión a la Base de Datos
+
+**Probar Conexión a la Base de Datos**
 Método: GET
 URL: http://localhost:8080/translate/ping
-Contribuciones
-Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 
-Fork el repositorio.
 
-Crea una rama nueva:
+**Contribuciones**
+**Si deseas contribuir a este proyecto, por favor sigue estos pasos:**
 
-bash
-Copiar código
-git checkout -b feature/nueva-funcionalidad
-Realiza tus cambios y haz commit:
 
-bash
-Copiar código
-git commit -am 'Añadir nueva funcionalidad'
-Push a la rama:
 
-bash
-Copiar código
-git push origin feature/nueva-funcionalidad
-Crea una nueva Pull Request en GitHub.
+**Fork el repositorio.**
 
-Licencia
-Este proyecto está licenciado bajo la Licencia MIT.
 
-css
-Copiar código
+
+**Crea una rama nueva:**
+```bash	
+  git checkout -b feature/nueva-funcionalidad
+  Realiza tus cambios y haz commit:
+
+
+
+```bash	
+  git commit -am 'Añadir nueva funcionalidad'
+  Push a la rama:
+
+
+
+```bash	
+  git push origin feature/nueva-funcionalidad
+  Crea una nueva Pull Request en GitHub.

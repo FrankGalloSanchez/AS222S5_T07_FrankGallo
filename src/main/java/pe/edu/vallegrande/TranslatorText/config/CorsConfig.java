@@ -12,7 +12,7 @@ public class CorsConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.addAllowedOrigin("https://symmetrical-journey-gjpqrp4qqv7c96ww-4200.app.github.dev"); // El frontend de Angular corre en este puerto
+        corsConfig.addAllowedOrigin("http://localhost:5173"); // Ajusta el origen a tu frontend
         corsConfig.addAllowedMethod("*"); // Permitir todos los métodos (GET, POST, etc.)
         corsConfig.addAllowedHeader("*"); // Permitir todas las cabeceras
         corsConfig.setAllowCredentials(true); // Permitir credenciales

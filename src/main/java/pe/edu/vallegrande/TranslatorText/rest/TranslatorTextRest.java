@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/translate")
 public class TranslatorTextRest {
 
@@ -108,5 +109,11 @@ public class TranslatorTextRest {
 							.body("Database connection failed."));
 				});
 	}
-
+	@GetMapping("/last")
+	public Mono<ResponseEntity<Translation>> getLastTranslation() {
+		return translatorTextRepository.findTopByOrderByIdDesc()
+				.map(translation -> ResponseEntity.ok().body(translation))
+				.defaultIfEmpty(ResponseEntity.notFound().build());
+	}
+	
 }
