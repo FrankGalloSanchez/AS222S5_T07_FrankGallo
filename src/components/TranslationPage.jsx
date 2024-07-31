@@ -82,10 +82,10 @@ const TranslationPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="page-background flex flex-col min-h-screen">
       <Header />
       <main className="flex-1 flex items-center justify-center py-10 px-4">
-        <div className="flex flex-col lg:flex-row gap-6 items-center justify-center w-full max-w-6xl">
+        <div className="content-overlay flex flex-col lg:flex-row gap-6 items-center justify-center w-full max-w-6xl">
           {/* Form Section */}
           <section className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
             <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">Servicio de Traducción</h1>

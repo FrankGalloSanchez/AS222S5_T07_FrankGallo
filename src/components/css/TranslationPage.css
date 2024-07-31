@@ -1,0 +1,16 @@
+/* TranslationPage.css */
+.page-background {
+    background-image: url('/src/assets/img/fondo2.jpg'); /* Ruta a tu imagen */
+    background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Asegúrate de que el fondo cubra toda la altura de la ventana */
+    width: 100vw; /* Asegúrate de que el fondo cubra toda la anchura de la ventana */
+  }
+  
+  .content-overlay {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente para el contenido */
+    padding: 2rem;
+    border-radius: 0.5rem;
+  }
+  
