@@ -6,6 +6,7 @@ import Features from '../Home/Features';
 import About from './About';
 import Footer from './Footer';
 import Header from './Header';
+import Bot from '../components/Bot/Bot';
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <Features/>
       <About/>
       <Footer/>
+      <Bot/>
     </div>
   );
 };
