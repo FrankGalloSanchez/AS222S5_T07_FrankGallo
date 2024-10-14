@@ -7,6 +7,11 @@ WORKDIR /app
 #Copy the packaged jar file into our docker image
 COPY target/TranslatorText-0.0.1-SNAPSHOT.jar app.jar
 
+ENV DATABASE_URL ${DATABASE_URL}
+ENV DATABASE_USERNAME ${DATABASE_USERNAME}
+ENV DATABASE_PASSWORD ${DATABASE_PASSWORD}
+ENV API_KEY ${API_KEY}
+
 #Expose the port
 EXPOSE 8080
 
