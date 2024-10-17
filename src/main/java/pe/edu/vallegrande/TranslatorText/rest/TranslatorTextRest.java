@@ -73,7 +73,7 @@ public class TranslatorTextRest {
 				.defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/actives")
+	@GetMapping("/all/actives")
 	public Flux<Translation> getAllActives() {
 		return translatorTextService.findAllActives();
 	}
